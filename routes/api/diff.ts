@@ -1,11 +1,11 @@
 import { HandlerContext } from "$fresh/server.ts";
 import { encodeToString } from "https://deno.land/std@0.97.0/encoding/hex.ts";
-import { format, formatDistance, formatRelative, subDays }  from "npm:date-fns";
 import {config} from "../../config.ts";
 
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
 
-  const now = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
+  // const now = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
+  const now = formatDate(new Date());
   console.log(`diff start: ${now}`);
   const current = await fetch("https://mask-api.icloud.com/egress-ip-ranges.csv");
   const textCurrent = await current.text();
@@ -24,6 +24,21 @@ async function getHash(s: string) {
   const data = new TextEncoder().encode(s);
   const digest = await crypto.subtle.digest("sha-256", data.buffer);
   return encodeToString(new Uint8Array(digest));
+}
+function formatDate(dt:Date) {
+  const yyyymmdd = new Intl.DateTimeFormat(
+    undefined,
+    {
+      year:   'numeric',
+      month:  '2-digit',
+      day:    '2-digit',
+      hour:   '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    }
+  )
+  
+  return yyyymmdd.format(dt);
 }
 
 
