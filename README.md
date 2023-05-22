@@ -1,6 +1,11 @@
-# fresh project
+# Twilight
+
+## what is this
+Twilight is a Apple Private Reray IP list change checker.
 
 ### Usage
+Check diff: 
+/api/diff
 
 Start the project:
 

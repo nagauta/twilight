@@ -76,6 +76,7 @@
     "https://deno.land/std@0.178.0/path/separator.ts": "0fb679739d0d1d7bf45b68dacfb4ec7563597a902edbaf3c59b50d5bcadd93b1",
     "https://deno.land/std@0.178.0/path/win32.ts": "d186344e5583bcbf8b18af416d13d82b35a317116e6460a5a3953508c3de5bba",
     "https://deno.land/std@0.178.0/semver/mod.ts": "409a2691f5a411c34e917c1e6d445a6d1d53f3fadf660e44a99dd0bf9b2ef412",
+    "https://deno.land/std@0.97.0/encoding/hex.ts": "f952e0727bddb3b2fd2e6889d104eacbd62e92091f540ebd6459317a61932d9b",
     "https://deno.land/x/code_block_writer@11.0.3/mod.ts": "2c3448060e47c9d08604c8f40dee34343f553f33edcdfebbf648442be33205e5",
     "https://deno.land/x/code_block_writer@11.0.3/utils/string_utils.ts": "60cb4ec8bd335bf241ef785ccec51e809d576ff8e8d29da43d2273b69ce2a6ff",
     "https://deno.land/x/denoflate@1.2.1/mod.ts": "f5628e44b80b3d80ed525afa2ba0f12408e3849db817d47a883b801f9ce69dd6",
@@ -134,5 +135,28 @@
     "https://raw.githubusercontent.com/lucacasonato/esbuild_deno_loader/8031f71afa1bbcd3237a94b11f53a2e5c5c0e7bf/src/native_loader.ts": "2a0f5a7b68a57c4651ad48161b32532356b434597a6cf282683427482b38f6fa",
     "https://raw.githubusercontent.com/lucacasonato/esbuild_deno_loader/8031f71afa1bbcd3237a94b11f53a2e5c5c0e7bf/src/portable_loader.ts": "47adb6d9a00f13a87d0a15f2af79118eb93503234008c31392d71270bc0a42fa",
     "https://raw.githubusercontent.com/lucacasonato/esbuild_deno_loader/8031f71afa1bbcd3237a94b11f53a2e5c5c0e7bf/src/shared.ts": "007e8d575cb6ebcac4110f1f72188a8bec3aa29287b4ad26e98403c00bebf036"
+  },
+  "npm": {
+    "specifiers": {
+      "date-fns": "date-fns@2.30.0"
+    },
+    "packages": {
+      "@babel/runtime@7.21.5": {
+        "integrity": "sha512-8jI69toZqqcsnqGGqwGS4Qb1VwLOEp4hz+CXPywcvjs60u3B4Pom/U/7rm4W8tMOYEB+E9wgD0mW1l3r8qlI9Q==",
+        "dependencies": {
+          "regenerator-runtime": "regenerator-runtime@0.13.11"
+        }
+      },
+      "date-fns@2.30.0": {
+        "integrity": "sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==",
+        "dependencies": {
+          "@babel/runtime": "@babel/runtime@7.21.5"
+        }
+      },
+      "regenerator-runtime@0.13.11": {
+        "integrity": "sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==",
+        "dependencies": {}
+      }
+    }
   }
 }
