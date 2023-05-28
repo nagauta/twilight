@@ -1,6 +1,9 @@
 {
   "tasks": {
-    "start": "deno run -A --allow-env --watch=static/,routes/ dev.ts"
+    "start": "deno run -A --allow-env --watch=static/,routes/ dev.ts",
+    "db-schema": "deno run -A --unstable npm:prisma generate --data-proxy",
+    "db-push": "deno run -A --unstable npm:prisma db push",
+    "db-pull": "deno run -A --unstable npm:prisma db pull"
   },
   "importMap": "./import_map.json",
   "compilerOptions": {

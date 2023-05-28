@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["deno"]
+  output = "../generated/client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+   directUrl = env("DATABASE_URL_DIRECT")
+}
+
+model TwFileHash {
+  id          Int     @id @default(autoincrement())
+  hash        String  @unique
+  reg_time DateTime @default(now())
+
+  @@map("tw_file_hash")
+}
