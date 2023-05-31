@@ -5,7 +5,7 @@ import {
   GetObjectCommand,
   PutObjectCommand,
   S3Client,
-} from "npm:@aws-sdk/client-s3";
+} from "https://esm.sh/@aws-sdk/client-s3";
 
 export class CsvMonitor {
   constructor() {
