@@ -6,6 +6,7 @@ import {
   PutObjectCommand,
   S3Client,
 } from "https://esm.sh/@aws-sdk/client-s3";
+import { twilightLogger } from "./twilightLogger.ts";
 
 export class CsvMonitor {
   constructor() {
@@ -13,7 +14,7 @@ export class CsvMonitor {
   // メンバ関数
   public async monitor(): Promise<void> {
     const now = new Date();
-    console.log(`diff start: ${now.toISOString()}`);
+    twilightLogger.info(`diff start: ${new Date().toISOString()}`);
     const current = await fetch(
       "https://mask-api.icloud.com/egress-ip-ranges.csv",
     );
@@ -39,7 +40,7 @@ export class CsvMonitor {
     const bodyAsString = await body.transformToString();
     const hashStored = await getHash(bodyAsString);
 
-    console.log(`current: ${hashCurrent}, stored: ${hashStored}`);
+    twilightLogger.info(`current: ${hashCurrent}, stored: ${hashStored}`);
 
     const isSameCsv = hashCurrent === hashStored;
     if (!isSameCsv) {
@@ -52,7 +53,6 @@ export class CsvMonitor {
         }),
       );
 
-      console.log(`csv: ${result}`);
       // todo DBに新しいCSVのハッシュを保存
       const prisma = new PrismaClient();
 
@@ -63,17 +63,18 @@ export class CsvMonitor {
             reg_time: now,
           },
         });
-        console.log(`insert new hash: ${twFileHash.hash}.`);
+        twilightLogger.info(`insert new hash: ${twFileHash.hash}.`);
       } catch (error) {
-        console.log(`failed to insert hash of file:${hashCurrent} ${error}.`);
+        twilightLogger.fatal(
+          `failed to insert hash of file:${hashCurrent} ${error}.`,
+        );
       }
 
       // todo ファイルの差分を確認する
-
       console.log("not same");
     } else {
       // 何もしない
-      console.log("same");
+      twilightLogger.info(`same csv`);
     }
   }
 }
