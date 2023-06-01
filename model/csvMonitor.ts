@@ -7,6 +7,7 @@ import {
   S3Client,
 } from "https://esm.sh/@aws-sdk/client-s3";
 import { twilightLogger } from "./twilightLogger.ts";
+import { CsvDiff } from "./csvDiff.ts";
 
 export class CsvMonitor {
   constructor() {
@@ -40,6 +41,7 @@ export class CsvMonitor {
     const bodyAsString = await body.transformToString();
     const hashStored = await getHash(bodyAsString);
 
+    console.log(`JP diff: ${await CsvDiff.compareCsv(textCurrent, bodyAsString)}`);
     twilightLogger.info(`current: ${hashCurrent}, stored: ${hashStored}`);
 
     const isSameCsv = hashCurrent === hashStored;
