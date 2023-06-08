@@ -41,7 +41,9 @@ export class CsvMonitor {
     const bodyAsString = await body.transformToString();
     const hashStored = await getHash(bodyAsString);
 
-    console.log(`JP diff: ${await CsvDiff.compareCsv(textCurrent, bodyAsString)}`);
+    console.log(
+      `JP diff: ${await CsvDiff.compareCsv(textCurrent, bodyAsString)}`,
+    );
     twilightLogger.info(`current: ${hashCurrent}, stored: ${hashStored}`);
 
     const isSameCsv = hashCurrent === hashStored;

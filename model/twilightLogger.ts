@@ -8,7 +8,6 @@ class TwilightLogger {
   private static instance: TwilightLogger;
 
   private constructor() {
-    
   }
 
   public static getInstance(): TwilightLogger {

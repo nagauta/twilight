@@ -5,16 +5,13 @@ export class EgressIpRangesCsv {
   private _hash: string = "";
 
   private constructor() {
-    
   }
 
   public text(): string {
-    
     return this._text;
   }
 
   public hash(): string {
-    
     return this._hash;
   }
 

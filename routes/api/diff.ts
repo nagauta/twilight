@@ -16,23 +16,22 @@ export const handler = async (
     const prisma = new PrismaClient();
     const twFileHash = await prisma.twFileHash.findFirstOrThrow({
       orderBy: [
-        {reg_time:"desc"}
-      ]
+        { reg_time: "desc" },
+      ],
     });
-    
+
     console.log(
       `current: ${egressIpRangesCsv.hash()}, stored: ${twFileHash?.hash}@${twFileHash?.reg_time}`,
     );
 
     return returnResult(twFileHash?.hash === egressIpRangesCsv.hash());
   } catch (error) {
-
     console.log(`failed to find hash: ${error}`);
     return returnResult(false);
   }
 };
 
-async function returnResult(isSameCsv: boolean, storedDate?:Date) {
+async function returnResult(isSameCsv: boolean, storedDate?: Date) {
   const headers = { "content-type": "application/json" };
   const json = {
     isSameCsv,
